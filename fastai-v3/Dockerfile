@@ -26,7 +26,7 @@ RUN curl -o ~/miniconda.sh -O  https://repo.continuum.io/miniconda/Miniconda3-la
      chmod +x ~/miniconda.sh && \
      ~/miniconda.sh -b -p /opt/conda && \
      rm ~/miniconda.sh && \
-    /opt/conda/bin/conda install conda-build jupyter jupyter-lab && \
+    /opt/conda/bin/conda install conda-build jupyter jupyterlab && \
     /opt/conda/bin/conda install -c conda-forge jupyter_contrib_nbextensions
 
 ENV PATH=$PATH:/opt/conda/bin/
