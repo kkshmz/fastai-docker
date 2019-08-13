@@ -48,5 +48,6 @@ RUN git clone https://github.com/fastai/course-v3.git
 
 COPY config.yml /root/.fastai/config.yml
 COPY run.sh /run.sh
+RUN echo "c.NotebookApp.token = u''" >> ~/.jupyter/jupyter_notebook_config.py
 
 CMD ["/run.sh"]

@@ -6,7 +6,7 @@ channels:
 dependencies:
   - pytorch
   - torchvision
-  - cuda100
+  - cudatoolkit=10.0
   - fastprogress
   - fastai
   - jupyter
