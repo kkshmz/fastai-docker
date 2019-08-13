@@ -1,4 +1,4 @@
-FROM nvidia/cuda:9.2-base-ubuntu16.04
+FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.0
 # See http://bugs.python.org/issue19846
 ENV LANG C.UTF-8
 LABEL com.nvidia.volumes.needed="nvidia_driver"
@@ -20,13 +20,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
      rm -rf /var/lib/apt/lists/*
 
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
-ENV PYTHON_VERSION=3.6
+ENV PYTHON_VERSION=3.7
 
 RUN curl -o ~/miniconda.sh -O  https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh  && \
      chmod +x ~/miniconda.sh && \
      ~/miniconda.sh -b -p /opt/conda && \
      rm ~/miniconda.sh && \
-    /opt/conda/bin/conda install conda-build
+    /opt/conda/bin/conda install conda-build jupyter jupyter-lab && \
+    /opt/conda/bin/conda install -c conda-forge jupyter_contrib_nbextensions
 
 ENV PATH=$PATH:/opt/conda/bin/
 ENV USER fastai
